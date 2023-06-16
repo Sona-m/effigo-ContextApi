@@ -1,0 +1,421 @@
+npm - node package manager
+
+it acts as a repository to host your packages.
+it is a tool to fetch , install , manage , remove , update ,upgrade all the packages in node application.
+npm is specifically a package manager for node.
+
+node -v  // you can check the version of node installed in your system.
+
+>>>> npm install <packageName> 
+>>>> npm i <packageName>
+
+it extracts a particular package and place it into a folder known as node_modules.
+
+node_modules -->  in this folder all your external package would be placed by npm.
+
+>>>> npm view <packageName>
+
+npm sees where your particular package is located , it will provide you a url .
+
+npm not only install packages but it also wants to manage all these packages. for managing packages it needs a file.
+
+package.json --->   it is a special file which contains a lot of info about your projects but for most part it is used by Package Manager for
+listing packages/dependencies your project has.
+
+>>>> npm init // create package.json file
+>>>>npm init --yes/-y  // create package.json file quickly without asking qustios about your package.
+
+>>>>npm remove/rm/un/uninstall <packageName>   // uninstall specific package
+
+Local vs Global Modules
+------------------------
+
+create-rect-app is a global npm module.
+
+>>>> --global / -g     // it install the package as global module
+
+most of the packages that says you to install globaly have a command line usege
+
+example  create-react-app
+         cypress
+
+>>>>npm root -g
+
+it displays your global modules
+
+
+Semantic versioning
+--------------------
+
+
+gives you guidelines to version your Package.
+
+16.13.1
+16 - major (API change)
+13 - minor (functionality change)
+1  - patch  (bug fixes)
+
+package.lock.json
+-------------------
+
+contains history of package versions
+hold each and every dependency
+
+when you change system , shift the environment , you want a consistant module behaviour f, for that package.lock.json is needed.
+
+
+versioning in package.json
+---------------------------
+
+
+^4.17.1 - ^4.x.x caret symbol means keep the major number same , and upgrade minor and patch as much as possible.
+
+~4.17.1 - it means keeps your major and minor number same , update your patch as much as possible.
+
+Dependencies in package.json
+----------------------------
+
+npm i express - it goes directly in dependencies in package.json , store it as a key value pair.
+
+>>>> npm install
+
+whenever you do nm install , anywhere in any environemnt. it's going to install packages presend in dependencies.
+
+
+devdependencies
+----------------
+
+webpack , babel - any short of library which you use just in development , is not really require in production
+
+>>>> npm install webpack --save-dev    // save webpack in devdependencies but not in dependencies
+
+peerdependencies
+-----------------
+
+only use when you are creating npm package.
+
+npm i react-dom
+
+it will say react-dom requires a peer of @react16.13.1 but none of them is installed . you must install peer dependencies yourself
+
+modules - reusable codes
+
+>>>> npm help - going to show you usage of npm
+>>>>npm install -h    gives you different ways of install
+>>>>npm help-search update   'give you command with the update keyword from documentation
+
+>>>> npm config set init-author-name sonam
+will set default author name in package.json
+
+>>>>npm get init-author-name
+checking default values
+
+>>>>npm config delete init-author-name
+delete default value of author in package.json
+
+>>>>npm i moment --save
+it will save it in dependency section in package.json
+
+>>>>npm install moment -g
+install package globally
+
+>>>>npm list
+displays packages in list structure
+
+>>>>npm list --depth 1
+specify depth of tree
+
+>>>>npm list --global true
+list globally installed packages
+
+"lodash" : "*"
+returns the latest version
+
+
+>>>>npm update <packageName> -S
+update and save it in package.json
+
+>>>>npm update -g
+update all global package
+
+>>>>npm install npm@latest -g
+install latest version of npm
+
+npm scripts
+-------------
+
+
+app.js
+
+console.log('npm scripts start")
+
+i want to run it using command
+
+in package.json , inside scripts , i will mention below commands
+
+
+"scripts" :{
+   "start" : "node app.js"
+}
+
+now when i run command
+>>>>npm start
+it will run app.js and print those messages.
+
+
+/*************************************************************************npm training examples****************************************************************************/
+\C:\Users\T480\Desktop\Intern_Practice>cd npm_practice
+
+C:\Users\T480\Desktop\Intern_Practice\npm_practice>npm init          // creates package.json
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help init` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install <pkg>` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+package name: (npm_practice)
+version: (1.0.0)
+description:
+entry point: (index.js)
+test command:
+git repository:
+keywords:
+author:
+license: (ISC)
+About to write to C:\Users\T480\Desktop\Intern_Practice\npm_practice\package.json:
+
+{
+  "name": "npm_practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
+
+
+Is this OK? (yes)
+
+C:\Users\T480\Desktop\Intern_Practice\npm_practice>npm uninstall package.json        //delete package.json
+
+up to date, audited 1 package in 84ms
+
+
+
+C:\Users\T480\Desktop\Intern_Practice\npm_practice>npm init --yes        // creare package.json quickly
+Wrote to C:\Users\T480\Desktop\Intern_Practice\npm_practice\package.json:
+
+{
+  "name": "npm_practice",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "description": ""
+}
+
+
+
+C:\Users\T480\Desktop\Intern_Practice\npm_practice>npm un package.json       // uninstall
+
+up to date, audited 1 package in 75ms
+
+
+
+
+C:\Users\T480\Desktop\Intern_Practice\npm_practice>npm init -y       //  install quickly
+Wrote to C:\Users\T480\Desktop\Intern_Practice\npm_practice\package.json:
+
+{
+  "name": "npm_practice",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "description": ""
+}
+
+
+
+C:\Users\T480\Desktop\Intern_Practice\npm_practice>npm un package.json
+
+up to date, audited 1 package in 84ms
+
+found 0 vulnerabilities
+
+C:\Users\T480\Desktop\Intern_Practice\npm_practice>npm config set init-author-name 'sonam'       // setting default values
+
+C:\Users\T480\Desktop\Intern_Practice\npm_practice>npm init --yes    // installing package.json with default values
+Wrote to C:\Users\T480\Desktop\Intern_Practice\npm_practice\package.json:
+
+{
+  "name": "npm_practice",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "'sonam'",
+  "license": "ISC",
+  "keywords": [],
+  "description": ""
+}
+
+
+
+C:\Users\T480\Desktop\Intern_Practice\npm_practice>npm config get init-author-name    // getting default value
+'sonam'
+
+C:\Users\T480\Desktop\Intern_Practice\npm_practice>npm config delete init-author-name   ///removing default value
+
+
+C:\Users\T480\Desktop\Intern_Practice\npm_practice>npm install moment      // installig a package
+
+added 1 package, and audited 2 packages in 1s
+
+found 0 vulnerabilities
+
+C:\Users\T480\Desktop\Intern_Practice\npm_practice>npm ls       // listing
+npm_practice@1.0.0 C:\Users\T480\Desktop\Intern_Practice\npm_practice
+└── moment@2.29.4
+
+
+C:\Users\T480\Desktop\Intern_Practice\npm_practice>npm rm moment      // removing package
+
+removed 1 package, and audited 1 package in 152ms
+
+found 0 vulnerabilities
+
+C:\Users\T480\Desktop\Intern_Practice\npm_practice>npm i moment --save    // install and save package in package.json
+
+added 1 package, and audited 2 packages in 954ms
+
+found 0 vulnerabilities
+
+C:\Users\T480\Desktop\Intern_Practice\npm_practice>npm un moment --save    // uninstall
+
+removed 1 package, and audited 1 package in 146ms
+
+found 0 vulnerabilities
+
+
+
+C:\Users\T480\Desktop\Intern_Practice\npm_practice>npm i moment --save-dev    // install nd save it in devdependency
+
+added 1 package, and audited 2 packages in 1s
+
+found 0 vulnerabilities
+
+C:\Users\T480\Desktop\Intern_Practice\npm_practice>npm un moment --save-dev     // uninstall
+
+removed 1 package, and audited 1 package in 157ms
+
+found 0 vulnerabilities
+
+C:\Users\T480\Desktop\Intern_Practice\npm_practice>npm root -g    // show the global packages.
+C:\Users\T480\AppData\Roaming\npm\node_modules
+
+C:\Users\T480\Desktop\Intern_Practice\npm_practice>npm help     // display details about npm
+npm <command>
+
+Usage:
+
+npm install        install all the dependencies in your project
+npm install <foo>  add the <foo> dependency to your project
+npm test           run this project's tests
+npm run <foo>      run the script named <foo>
+npm <command> -h   quick help on <command>
+npm -l             display usage info for all commands
+npm help <term>    search for help on <term> (in a browser)
+npm help npm       more involved overview (in a browser)
+
+All commands:
+
+    access, adduser, audit, bugs, cache, ci, completion,
+    config, dedupe, deprecate, diff, dist-tag, docs, doctor,
+    edit, exec, explain, explore, find-dupes, fund, get, help,
+    hook, init, install, install-ci-test, install-test, link,
+    ll, login, logout, ls, org, outdated, owner, pack, ping,
+    pkg, prefix, profile, prune, publish, query, rebuild, repo,
+    restart, root, run-script, search, set, shrinkwrap, star,
+    stars, start, stop, team, test, token, uninstall, unpublish,
+    unstar, update, version, view, whoami
+
+Specify configs in the ini-formatted file:
+    C:\Users\T480\.npmrc
+or on the command line via: npm <command> --key=value
+
+More configuration info: npm help config
+Configuration fields: npm help 7 config
+
+npm@9.5.1 C:\Program Files\nodejs\node_modules\npm
+
+C:\Users\T480\Desktop\Intern_Practice\npm_practice>npm install -h    // asking help about installing
+Install a package
+
+Usage:
+npm install [<package-spec> ...]
+
+Options:
+[-S|--save|--no-save|--save-prod|--save-dev|--save-optional|--save-peer|--save-bundle]
+[-E|--save-exact] [-g|--global]
+[--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+[--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+[--strict-peer-deps] [--no-package-lock] [--foreground-scripts]
+[--ignore-scripts] [--no-audit] [--no-bin-links] [--no-fund] [--dry-run]
+[-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+[-ws|--workspaces] [--include-workspace-root] [--install-links]
+
+aliases: add, i, in, ins, inst, insta, instal, isnt, isnta, isntal, isntall
+
+Run "npm help install" for more info
+
+
+C:\Users\T480\Desktop\Intern_Practice\npm_practice>npm help-search update  // gives about update keyword from documentation
+Top hits for "update"
+————————————————————————————————————————————————————————————————————————————————
+npm help update                                                        update:21
+npm help config                                                        update:10
+npm help audit                                                          update:8
+npm help dedupe                                                         update:8
+npm help install                                                        update:7
+npm help outdated                                                       update:6
+npm help ls                                                             update:5
+npm help hook                                                           update:4
+npm help ci                                                             update:3
+npm help init                                                           update:3
+————————————————————————————————————————————————————————————————————————————————
+(run with -l or --long to see more context)
+
+
+
+
+C:\Users\T480\Desktop\Intern_Practice\npm_practice>npm i moment
+
+added 1 package, and audited 2 packages in 1s
+
+found 0 vulnerabilities
+
+C:\Users\T480\Desktop\Intern_Practice\npm_practice>npm update moment --save   // for updating a package
+
+up to date, audited 2 packages in 528ms
+
+found 0 vulnerabilities
+
+
+
